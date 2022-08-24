@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesse's Api</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="textmid">Jesse's API of Animals</h1>
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>size</th>
+                <th>danger</th>
+                <th>gender</th>
+                <th>pic</th>
+            </tr>
+        </thead>
+        <tbody
+id="animals">
+</tbody>
+</div>
+<script>
+
+    let animals = [];
+    const animalContainer = document.getElementById("animals");
+    fetch("http://localhost:6969/users")
+      .then((res) => res.json())
+      .then((data) => {
+        animals = data;
+        console.log(data);
+        showanimals(data);
+      });
+    function showanimals(animals) {
+      //   animalContainer.innerHTML = "";
+      animals.forEach((animal) => {
+        animalContainer.innerHTML += `
+                    <tr>
+                        <td>${ animal.name }</td>
+                        <td>${ animal.size }</td>
+                        <td>${ animal.danger }</td>
+                        <td>${ animal.gender }</td>
+                        <td><img id="img" src="${ animal.picture }"></td>
+                    </tr>
+                </tbody>
+        `;
+      });
+    }
+        </script>
+</body>
+</html>

@@ -63,5 +63,34 @@ router.get("/:id", (req, res) => {
   router.put("/reset-psw/:id", (req, res) => {
     return passController.resetPsw(req, res);
   });
+
+  // liked posts
+
+// view liked posts
+router.get("/:id/likedPosts", (req, res) => {
+    return userController.getlikedPostsItems(req, res);
+  });
+  
+// 
+  router.patch("/:id", (req, res) => {
+    return userController.editUser(req, res);
+  });
+  
+// delete a liked post
+  router.delete(":/id/likedPosts", (req, res) => {
+    return userController.deletelikedPostsItem(req, res);
+  });
+  
+// clear liked pots
+  router.patch(":/id/likedPosts/_id", (req, res) => {
+    return userController.clearlikedPostsItems(req, res);
+  });
+
+// 
+  router.put(":/id/likedPosts", (req, res) => {
+    return userController.editlikedPosts(req, res);
+  });
+  
+  module.exports = router;
   
 module.exports = router;

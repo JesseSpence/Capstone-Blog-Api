@@ -5,7 +5,7 @@ require("dotenv").config();
 
 // ADD USER
 async function addUser(req, res) {
-  const { fullname, email, password, userRole, phone, created, cart } =
+  const { fullname, email, password, userRole, phone, created, likedPosts } =
     req.body;
   try {
     con.query(
@@ -15,7 +15,7 @@ async function addUser(req, res) {
         userRole,
         phone,
         created,
-        cart) values ("${fullname}","${email}","${password}","${userRole}","${phone}","${created}","${cart}")`,
+        likedPosts) values ("${fullname}","${email}","${password}","${userRole}","${phone}","${created}","${likedPosts}")`,
       (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -62,15 +62,15 @@ async function deleteUser(req, res) {
   }
 }
 
-async function getCartItems(req, res) {
-  let cart = [];
-  if (cart.length !== 0) {
+async function getlikedPostsItems(req, res) {
+  let likedPosts = [];
+  if (likedPosts.length !== 0) {
     try {
-      let sql = "Select cart FROM users WHERE ?";
+      let sql = "Select likedPosts FROM users WHERE ?";
       let users = { id: req.params.id };
       con.query(sql, users, (err, result) => {
         if (err) throw err;
-        res.send(result[0].cart);
+        res.send(result[0].likedPosts);
       });
     } catch (error) {
       console.log(error);
@@ -80,8 +80,8 @@ async function getCartItems(req, res) {
   }
 }
 
-async function addCartItem(req, res) {
-  let cart = [];
+async function addlikedPostsItem(req, res) {
+  let likedPosts = [];
   con.query(
     `SELECT * FROM users WHERE id = ${req.params.id}`,
     (err, result) => {
@@ -98,13 +98,13 @@ async function addCartItem(req, res) {
             logo: req.body.logo,
             user_id: req.body.user_id,
       };
-      if (result[0].cart !== "") {
-        cart = JSON.parse(result[0].cart);
+      if (result[0].likedPosts !== "") {
+        likedPosts = JSON.parse(result[0].likedPosts);
       }
-      cart.push(item);
+      likedPosts.push(item);
       con.query(
-        `UPDATE users SET cart = ? WHERE id = ${req.params.id}`,
-        JSON.stringify(cart),
+        `UPDATE users SET likedPosts = ? WHERE id = ${req.params.id}`,
+        JSON.stringify(likedPosts),
         (err, result) => {
           if (err) throw err;
           res.send(result);
@@ -114,18 +114,18 @@ async function addCartItem(req, res) {
   );
 }
 
-// async function deleteCartItem(req, res) {
-//   let cart = [];
+// async function deletelikedPostsItem(req, res) {
+//   let likedPosts = [];
 //   let sql = "Delete from products WHERE ?";
 //   let product = { id: req.params.id };
 //   con.query(sql, product, (err, result) => {
-//     if (result[0].cart !== "") {
-//       cart = JSON.parse(result[0].cart);
+//     if (result[0].likedPosts !== "") {
+//       likedPosts = JSON.parse(result[0].likedPosts);
 //     }
-//     cart.push(sql);
+//     likedPosts.push(sql);
 //     con.query(
-//       `UPDATE users SET cart = ? WHERE id = ${req.params.id}`,
-//       JSON.stringify(cart),
+//       `UPDATE users SET likedPosts = ? WHERE id = ${req.params.id}`,
+//       JSON.stringify(likedPosts),
 //       (err, result) => {
 //         if (err) throw err;
 //         res.send(result);
@@ -134,15 +134,15 @@ async function addCartItem(req, res) {
 //   });
 // }
 
-async function clearCartItems(req, res) {
-  // let cart;
+async function clearlikedPostsItems(req, res) {
+  // let likedPosts;
   // let sql = "update from users WHERE ?";
   // let users = { id: req.params.id };
   // con.query(sql, users, (err, result) => {
-  //   if (result[0].cart !== "") {
-  //     cart = [];
+  //   if (result[0].likedPosts !== "") {
+  //     likedPosts = [];
   //   }
-  //   cart.push(sql),
+  //   likedPosts.push(sql),
   //     (err, result) => {
   //       if (err) throw err;
   //       res.send(result);
@@ -155,11 +155,11 @@ async function clearCartItems(req, res) {
   };
   con.query(sql, user, (err, result) => {
     if (err) throw err;
-    let updateCart = `Update users set ?`;
-    const cart = {
-      cart: null,
+    let updatelikedPosts = `Update users set ?`;
+    const likedPosts = {
+      likedPosts: null,
     };
-    con.query(updateCart, cart, (err, result) => {
+    con.query(updatelikedPosts, likedPosts, (err, result) => {
       if (err) throw err;
       res.send(result);
     });
@@ -170,7 +170,7 @@ module.exports = {
   editUser,
   deleteUser,
   addUser,
-  getCartItems,
-  addCartItem,
-  clearCartItems,
+  getlikedPostsItems,
+  addlikedPostsItem,
+  clearlikedPostsItems,
 };

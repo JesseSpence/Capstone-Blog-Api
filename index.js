@@ -21,12 +21,6 @@ app.use((req, res, next) => {
 });
 
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "*");
-  next();
-});
-
 app.use(express.static("Public"));
 
 // This is where we check URLs and Request methods to create functionality

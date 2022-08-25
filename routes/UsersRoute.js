@@ -81,7 +81,7 @@ router.get("/:id/likedPosts", (req, res) => {
     return userController.deletelikedPostsItem(req, res);
   });
   
-// clear liked pots
+// clear liked posts
   router.patch(":/id/likedPosts/_id", (req, res) => {
     return userController.clearlikedPostsItems(req, res);
   });
@@ -91,6 +91,5 @@ router.get("/:id/likedPosts", (req, res) => {
     return userController.editlikedPosts(req, res);
   });
   
-  module.exports = router;
   
 module.exports = router;

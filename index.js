@@ -21,16 +21,19 @@ app.use((req, res, next) => {
 });
 
 
-app.use(express.static("Public"));
+// app.use(express.static("Public"));
 
 // This is where we check URLs and Request methods to create functionality
 // GET '/' is always what will be displayed on the home page of your application
 // app.get("/", (req, res) => {
 //   res.json({ msg: "Welcome" });
 // });
-app.get("/" , function(req , res){
-  res.sendFile(__dirname + "/users" + "index.html");
-})
+// app.get("/" , function(req , res){
+//   res.sendFile(__dirname + "/users" + "index.html");
+// })
+app.get("/", (req, res) => {
+  res.json({ msg: "Welcome" });
+});
 
 app.use("/blogposts", BlogPostRoute);
 app.use("/users", UsersRoute);

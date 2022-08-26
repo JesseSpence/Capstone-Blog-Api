@@ -4,6 +4,7 @@ const cors = require("cors"); // Used to prevent errors when working locally
 
 const BlogPostRoute = require("./routes/BlogPostsRoute");
 const UsersRoute = require("./routes/UsersRoute");
+const CommentsRoute = require("./routes/CommentsRoute");
 
 // Configure Server
 const app = express(); // Initialize express as an app variable
@@ -37,6 +38,7 @@ app.get("/", (req, res) => {
 
 app.use("/blogposts", BlogPostRoute);
 app.use("/users", UsersRoute);
+app.use("/comments", CommentsRoute);
 
 // Set up server to start listening for requests
 app.listen(app.get("port"), () => {

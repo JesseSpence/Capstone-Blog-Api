@@ -91,7 +91,8 @@ async function editBlogPost(req, res) {
       });
     } catch (error) {
       console.log(error);
-    }
+      res.status(400).send(error)
+  }
   }
 }
 
@@ -106,7 +107,8 @@ async function deleteBlogPost(req, res) {
       });
     } catch (error) {
       console.log(error);
-    }
+      res.status(400).send(error)
+  }
 }
 module.exports = {
   addBlogPost,

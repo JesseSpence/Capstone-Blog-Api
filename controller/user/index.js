@@ -23,7 +23,8 @@ async function addUser(req, res) {
     );
   } catch (error) {
     console.log(error);
-  }
+    res.status(400).send(error)
+}
 }
 // EDIT USER
 async function editUser(req, res) {
@@ -41,7 +42,8 @@ async function editUser(req, res) {
     );
   } catch (error) {
     console.log(error);
-  }
+    res.status(400).send(error)
+}
 }
 
 //DELETE USER
@@ -74,7 +76,8 @@ async function getlikedPostsItems(req, res) {
       });
     } catch (error) {
       console.log(error);
-    }
+      res.status(400).send(error)
+  }
   } else {
     res.send("empty");
   }

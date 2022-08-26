@@ -31,22 +31,23 @@ async function getSingleUser(req, res) {
 }
 
 // GET ALL PRODUCTS
-async function getProducts(req, res) {
+async function getBlogPosts(req, res) {
   try {
-    con.query("SELECT * FROM products", (err, result) => {
+    con.query("SELECT * FROM BlogPosts", (err, result) => {
       if (err) throw err;
       res.send(result);
     });
   } catch (error) {
     console.log(error);
-  }
+    res.status(400).send(error)
+}
 }
 
 // GET SINGLE PRODUCT BY ID
-async function SingleProduct(req, res) {
+async function SingleBlogPost(req, res) {
   try {
     con.query(
-      `SELECT * FROM products where id = ${req.params.id} `,
+      `SELECT * FROM BlogPosts where id = ${req.params.id} `,
       (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -61,6 +62,6 @@ async function SingleProduct(req, res) {
 module.exports = {
   getUsers,
   getSingleUser,
-  getProducts,
-  SingleProduct,
+  getBlogPosts,
+  SingleBlogPost,
 };

@@ -4,8 +4,14 @@ const con = require("../lib/dbConnection");
 const middleware = require("../middleware/auth");
 // const nodemailer = require('nodemailer');
 
+const adminController = require("../controller/admin/index");
+const displayController = require("../controller/display/index");
+
+
 //get all blogs
-router.get("/",  (req, res) => {
+
+router.get("/", (req, res) => {
+  
   try {
     let sql = "SELECT * FROM BlogPosts";
     con.query(sql, (err, result) => {
@@ -31,6 +37,20 @@ router.get("/:id", (req, res) => {
 router.put("/:id", middleware, (req, res) => {
   return adminController.editBlogPost(req, res);
 });
+// router.patch("/:id", (req, res) => {
+//   const P = {
+    
+//   }
+// }
+// try {
+//   con.query(`UPDATE Topics SET ? WHERE topic_id ="${req.params.id}"`,topic, (err, result) => {
+//       if (err) throw err.message;
+//       res.send(result);
+//   });
+// } catch (error) {
+// console.log(error);
+// res.status(400).send(error)
+// }
 
 // DELETE A BlogPost
 router.delete("/:id", middleware, (req, res) => {

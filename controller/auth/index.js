@@ -68,7 +68,8 @@ async function Login(req, res) {
     });
   } catch (error) {
     console.log(error);
-  }
+    res.status(400).send(error)
+}
 }
 
 
@@ -113,7 +114,8 @@ async function Register(req, res) {
     );
   } catch (error) {
     console.log(error);
-  }
+    res.status(400).send(error)
+}
 }
 
 async function Verify(req, res) {

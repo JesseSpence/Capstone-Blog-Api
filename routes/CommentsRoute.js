@@ -3,7 +3,7 @@ const router = express.Router();
 const con = require("../lib/dbConnection");
 const middleware = require("../middleware/auth");
 
-
+//tst comment
 router.get("/", (req, res) => {
     try {
         con.query("SELECT * FROM Comments", (err, result) => {

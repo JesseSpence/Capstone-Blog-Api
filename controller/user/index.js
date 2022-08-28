@@ -63,7 +63,7 @@ async function deleteUser(req, res) {
     res.send("Not Allowed");
   }
 }
-
+// 
 async function getlikedPostsItems(req, res) {
   let likedPosts = [];
   if (likedPosts.length !== 0) {

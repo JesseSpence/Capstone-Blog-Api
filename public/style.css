@@ -26,7 +26,7 @@ body{
 
 
 .fixed_headers {
-    margin:auto;
+ margin:0 auto -3%;
   width:var(--table_width);
   table-layout: fixed;
   border-collapse: collapse;

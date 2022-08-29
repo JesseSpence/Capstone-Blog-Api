@@ -1,6 +1,6 @@
 // Import needed libraries
 const express = require("express"); // Used to set up a server
-// const cors = require("cors"); // Used to prevent errors when working locally
+const cors = require("cors"); // Used to prevent errors when working locally
 
 const BlogPostRoute = require("./routes/BlogPostsRoute");
 const UsersRoute = require("./routes/UsersRoute");
@@ -16,8 +16,7 @@ app.use(express.json()); // Enable the server to handle JSON requests
 // app.use(cors());//
 
 // app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader("Access-Control-Allow-Headers", "*");
+//  
 //   next();
 // });
 
@@ -29,7 +28,9 @@ app.use(express.static("public"));
 
 //get static index page on loadup
 app.get("/" , (req , res)=> {
-  res.sendFile(__dirname  + "/index");
+  res.sendFile(__dirname + "/index");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
 })
 
 // GET '/' is always what will be displayed on the home page of your application

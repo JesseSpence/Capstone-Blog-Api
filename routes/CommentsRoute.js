@@ -41,7 +41,7 @@ router.post("/",(req,res) => {
                     userID: req.body.userID,
                     blogpostID: req.body.blogpostID,
                     comment:req.body.comment,
-                    username:req.body.username
+                    comUsername:req.body.comUsername
                   } 
                   try {
                     let sql = "INSERT INTO Comments SET ?"

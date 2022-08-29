@@ -16,11 +16,12 @@ app.use(express.json()); // Enable the server to handle JSON requests
 app.use(cors());//
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  res.setHeader('Access-Control-Allow-Methods', '*');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
 });
-
 //use static 
 app.use(express.static("public"));
 
@@ -29,7 +30,9 @@ app.use(express.static("public"));
 
 //get static index page on loadup
 app.get("/" , (req , res)=> {
-  res.sendFile(__dirname  + "/index");
+  res.sendFile(__dirname + "/index");
+  
+  
 })
 
 // GET '/' is always what will be displayed on the home page of your application

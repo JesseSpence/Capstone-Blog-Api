@@ -8,48 +8,125 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 class="textmid">Jesse's API of Animals</h1>
-<div class="container">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>size</th>
-                <th>danger</th>
-                <th>gender</th>
-                <th>pic</th>
-            </tr>
-        </thead>
-        <tbody
-id="animals">
-</tbody>
-</div>
-<script>
-
-    let animals = [];
-    const animalContainer = document.getElementById("animals");
-    fetch("http://localhost:6969/users")
-      .then((res) => res.json())
-      .then((data) => {
-        animals = data;
-        console.log(data);
-        showanimals(data);
-      });
-    function showanimals(animals) {
-      //   animalContainer.innerHTML = "";
-      animals.forEach((animal) => {
-        animalContainer.innerHTML += `
-                    <tr>
-                        <td>${ animal.name }</td>
-                        <td>${ animal.size }</td>
-                        <td>${ animal.danger }</td>
-                        <td>${ animal.gender }</td>
-                        <td><img id="img" src="${ animal.picture }"></td>
-                    </tr>
-                </tbody>
-        `;
-      });
-    }
-        </script>
+  <table class="fixed_headers">
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Route</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GET</td>
+        <td>/users</td>
+        <td>See all users</td>
+      </tr>
+      <tr>
+        <td>GET</td>
+      <td>/users/:id</td>
+        <td>Get Single user by ID</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/users/register</td>
+        <td>Add a user</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>users/login</td>
+        <td>Login user account</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/users/users/verify</td>
+        <td>Authenticate user by token</td>
+      </tr>
+      <tr>
+        <td>PUT</td>
+        <td>/users/:id</td>
+        <td>Update a user</td>
+      </tr>
+      <tr>
+        <td>DELETE</td>
+        <td>users/:id</td>
+        <td>Delete a user</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <table class="fixed_headers">
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Route</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GET</td>
+        <td>/blogposts</td>
+        <td>See all Blogs/reviews</td>
+      </tr>
+      <tr>
+        <td>GET</td>
+      <td>/blogposts/:id</td>
+        <td>Get Single Blog by ID</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/blogposts</td>
+        <td>Add a Blog</td>
+      </tr>
+      <tr>
+        <td>PUT</td>
+        <td>/blogposts/:id</td>
+        <td>Edit a Blog</td>
+      </tr>
+      <tr>
+        <td>DELETE</td>
+        <td>/blogposts/:id</td>
+        <td>Remove a Blog</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <table class="fixed_headers">
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Route</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GET</td>
+        <td>/comments</td>
+        <td>See all Comments</td>
+      </tr>
+      <tr>
+        <td>GET</td>
+      <td>/comments/blogposts/:id</td>
+        <td>Get all comments belonging to a single Blog</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/comments/</td>
+        <td>Add a comment</td>
+      </tr>
+      <tr>
+        <td>PUT</td>
+        <td>/comments/:id</td>
+        <td>Edit a comment</td>
+      </tr>
+      <tr>
+        <td>DELETE</td>
+        <td>/comments/:id</td>
+        <td>Remove a comment</td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>

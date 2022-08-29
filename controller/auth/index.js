@@ -123,7 +123,7 @@ async function Verify(req, res) {
   jwt.verify(token, process.env.jwtSecret, (error, decodedToken) => {
     if (error) {
       res.status(401).json({
-        msg: "Unauthorized Access!",
+        msg: " client must authenticate!",
       });
     } else {
       res.status(200);

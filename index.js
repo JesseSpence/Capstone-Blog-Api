@@ -22,7 +22,7 @@ app.use(express.json()); // Enable the server to handle JSON requests
 // });
 
 //use static 
-app.use(express.static("Public"));
+app.use(express.static("public"));
 
 // This is where we check URLs and Request methods to create functionality
 

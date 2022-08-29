@@ -28,8 +28,8 @@ app.use(express.static("Public"));
 
 
 //get static index page on loadup
-app.get("/" , function(req , res){
-  res.sendFile(__dirname  + "index.html");
+app.get("/" , (req , res)=> {
+  res.sendFile(__dirname  + "/index");
 })
 
 // GET '/' is always what will be displayed on the home page of your application

@@ -25,17 +25,14 @@ app.use(express.json()); // Enable the server to handle JSON requests
 app.use(express.static("Public"));
 
 // This is where we check URLs and Request methods to create functionality
-// GET '/' is always what will be displayed on the home page of your application
-// app.get("/", (req, res) => {
-//   res.json({ msg: "Welcome" });
-// });
+
 
 //get static index page on loadup
 app.get("/" , function(req , res){
-  res.sendFile(__dirname + "/users" + "index.html");
+  res.sendFile(__dirname  + "index.html");
 })
 
-
+// GET '/' is always what will be displayed on the home page of your application
 // app.get("/", (req, res) => {  to get a basic message page
 //   res.json({ msg: "Welcome" });
 // });

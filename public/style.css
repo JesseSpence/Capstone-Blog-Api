@@ -6,7 +6,7 @@
     --table_body_height: 300px;
     --column_one_width: 20vw;
     --column_two_width: 20vw;
-    --column_three_width: 35vw+;
+    --column_three_width: 35vw;
 }
 
 body{
@@ -46,8 +46,7 @@ body{
   
   tbody {
     display: block;
-    overflow-x: clip;
-    width: 100%;
+    width: var(--table_width);
     height: var(--table_body_height);}
 
    td{
@@ -82,5 +81,13 @@ tr:nth-child(even) {
     display: flex;
     flex-direction: column;
     width: 100vw;
+}
+
+@media screen and (max-width:415px){
+  table{
+    transform: scale(0.7);
+  }
+  
+  td:nth-child(3), th:nth-child(3) { width:100vw}
 }
 

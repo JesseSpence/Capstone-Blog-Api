@@ -22,6 +22,17 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
 });
+
+//cors error fixes
+app.use(cors({
+  origin: ['http://192.168.9.115:8080', 'http://localhost:8080'],
+  credentials: true
+}));
+// credentials will allow you to access the cookie on your fetch(url, 
+// {
+// credentials: 'include'
+// }) function
+
 //use static 
 app.use(express.static("public"));
 
@@ -32,7 +43,7 @@ app.use(express.static("public"));
 app.get("/" , (req , res)=> {
   res.sendFile(__dirname + "/index");
   
-  
+
 })
 
 // GET '/' is always what will be displayed on the home page of your application

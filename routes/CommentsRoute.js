@@ -34,9 +34,9 @@ router.post("/",(req,res) => {
     try { // to post a comment first get the blog post id 
         con.query(`SELECT * FROM BlogPosts WHERE id = "${req.body.blogpostID}" `, (err, result) => {
             if (err) throw err.message;
-            if(result === 0){
-                res.send("no such post")
-            }else{
+           if(result === 0){
+               res.send("no such post")}
+            else{
                 const comment = {
                     userID: req.body.userID,
                     blogpostID: req.body.blogpostID,

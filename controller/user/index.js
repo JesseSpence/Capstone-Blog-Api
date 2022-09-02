@@ -4,28 +4,28 @@ const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
 // ADD USER
-async function addUser(req, res) {
-  const { fullname, email, password, userRole, phone, created, likedPosts } =
-    req.body;
-  try {
-    con.query(
-      `INSERT INTO Users (fullname,
-        email,
-        password,
-        userRole,
-        phone,
-        created,
-        likedPosts) values ("${fullname}","${email}","${password}","${userRole}","${phone}","${created}","${likedPosts}")`,
-      (err, result) => {
-        if (err) throw err;
-        res.send(result);
-      }
-    );
-  } catch (error) {
-    console.log(error);
-    res.status(400).send(error)
-}
-}
+// async function addUser(req, res) {
+//   const { fullname, email, password, userRole, phone, created, likedPosts } =
+//     req.body;
+//   try {
+//     con.query(
+//       `INSERT INTO Users (fullname,
+//         email,
+//         password,
+//         userRole,
+//         phone,
+//         created,
+//         likedPosts) values ("${fullname}","${email}","${password}","${userRole}","${phone}","${created}","${likedPosts}")`,
+//       (err, result) => {
+//         if (err) throw err;
+//         res.send(result);
+//       }
+//     );
+//   } catch (error) {
+//     console.log(error);
+//     res.status(400).send(error)
+// }
+// }
 // EDIT USER
 async function editUser(req, res) {
   const { name, surname, email, password, username, contact, type } =

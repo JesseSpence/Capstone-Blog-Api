@@ -44,6 +44,7 @@ async function Login(req, res) {
               contact: result[0].contact,
               registerDate: result[0].registerDate,
               username: result[0].username,
+              profilePicture: result[0].profilePicture,
             },
           };
           // Creating a token and setting expiry date

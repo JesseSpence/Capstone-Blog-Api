@@ -172,7 +172,6 @@ async function clearlikedPostsItems(req, res) {
 module.exports = {
   editUser,
   deleteUser,
-  addUser,
   getlikedPostsItems,
   addlikedPostsItem,
   clearlikedPostsItems,

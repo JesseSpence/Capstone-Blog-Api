@@ -64,7 +64,7 @@ router.post("/",(req,res) => {
 router.delete("/:id",(req, res) => {
     // if (user.user_type === "admin") {
         try {
-            con.query(`SELECT * FROM Comments WHERE id = "${req.params.id}"`, (err, result) => {
+            con.query(`DELETE FROM Comments WHERE id = "${req.params.id}"`, (err, result) => {
                 if (err) throw err;
                 res.send(result);
             });

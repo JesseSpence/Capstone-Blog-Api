@@ -30,8 +30,8 @@ require("dotenv").config();
 async function editUser(req, res) {
   const { name, surname, email, password, username, contact, type, profilePicture} =
     req.body;
-  const salt = bcrypt.genSaltSync(10);
-  const hash = bcrypt.hashSync(password, salt);
+  const salt = await bcrypt.genSaltSync(10);
+  const hash = await bcrypt.hashSync(password, salt);
   try {
     con.query(
       `UPDATE Users SET name="${name}", surname="${surname}", email="${email}", password="${hash}", username="${username}", contact="${contact}", type="${type}", profilePicture="${profilePicture}" WHERE id= ${req.params.id}`,
